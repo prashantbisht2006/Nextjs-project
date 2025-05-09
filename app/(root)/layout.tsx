@@ -4,9 +4,10 @@ export default function Layout({children}:Readonly<{children:React.ReactNode}>){
     return (
        
             
-                <main className="flex-grow p-4">
-                    {children}
+                <main className="flex-grow">
                     <Navbar/>
+                    {children}
+                    
                 </main>
                
     
