@@ -1,9 +1,14 @@
+import SearchForm from "../componet/SearchForm";
+
 export default function Home() {
   return (
     <>
-    <section className=" flex items-center justify-center">
-    <h1 className="heading-uppercase bg-black px-6 font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5"> Home</h1>
-    {/* <h1 className="heading-section">Home</h1> */}
+    <section className="pink_container">
+    <div className=" items-center justify-center ">
+    <h1 className="heading-section">helloguys,<br/>how are you</h1>
+    <p className="sub-heading !max-w-3xl">welcome to world of mimic</p>
+    <SearchForm/>
+    </div>
     </section></>
   )
 }
