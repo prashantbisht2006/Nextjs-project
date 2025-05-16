@@ -1,11 +1,22 @@
 import React from 'react'
 import { formatDate } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
+import Link from 'next/link';
 
 const StartupCards = ({post}={post: StartupTypeCard}) => {
-  const {_createdAt, views,author:{_id:author_id,name},title,category,_id,image} = post
+  const {
+  _createdAt,
+  views,
+  authors: { _id: author_id, name }, // fix here
+  title,
+  category,
+  _id,
+  image
+} = post;
+
   return (
-    <li className='start-card group'>
+    <li className="startup-card group">
+
       <div className='flex-between'>
         <p className='startup_card_date'>
           {formatDate(_createdAt)}
@@ -17,13 +28,13 @@ const StartupCards = ({post}={post: StartupTypeCard}) => {
       </div>
       <div className='flex-between mt-5 gap-5'>
         <div className='flex-1'>
-          <link href={`/user/${author_id?._id}`}>
-          <p className='text-16-medium line-clamp-1'>
-            {name}
-          </p>
-          </link>
-          <link href={`/startup/${_id}`}>
-          <h3 className='text-26-semibold line-clamp-1'></h3></link>
+          <Link href={`/user/${author_id}`}>
+  <p>{name}</p>
+</Link>
+
+<Link href={`/startup/${_id}`}>
+  <h3>{title}</h3>
+</Link>
         </div>
       </div>
     </li>

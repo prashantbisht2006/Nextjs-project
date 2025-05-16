@@ -63,11 +63,54 @@
     @apply size-[50px] rounded-full bg-black flex justify-center items-center 
   }
   .card_grid {
-    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+}
+
+.startup-card {
+  @apply bg-white border-[5px] rounded-[22px] border-black py-6 px-5 rounded-[22px] shadow-md transition-all duration-500 overflow-hidden;
+}
+
+
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+
+  .text-30-extrabold {
+    @apply text-[30px] font-extrabold text-white;
   }
-  .startup-card {
-    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
+
+  .text-30-bold {
+    @apply text-[30px] font-bold text-black;
   }
+
+  .text-30-semibold {
+    @apply font-semibold text-[30px] text-black;
+  }
+
+  .text-26-semibold {
+    @apply font-semibold text-[26px] text-black;
+  }
+
+  .text-24-black {
+    @apply text-[24px] font-black text-black;
+  }
+
+  .text-20-medium {
+    @apply font-medium text-[20px] text-black;
+  }
+
+  .text-16-medium {
+    @apply font-medium text-[16px] text-black;
+  }
+
+  .text-14-normal {
+  @apply font-normal text-sm text-white opacity-80;
+}
+
+
+
 
   
 }
