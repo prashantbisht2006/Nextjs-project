@@ -4,7 +4,7 @@ import StartupCard from "@/components/StartupCards";
 
 export default async function Home({searchParams}: {searchParams: Promise<{query?:string}>}) {
   const query = (await searchParams).query;
-  const posts=[{_createdAt:"Yesterdaty",views:100,authors:{_id:1},discription:"thisnis the discription",
+  const posts=[{_createdAt:new Date(),views:100,authors:{_id:1,name:"prashant"},discription:"thisnis the discription",
   image:"https://images.unsplash.com/photo-1677631231231-123123123123?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",category:"technology",title:"technologia"},]
   return (
     <>
@@ -19,7 +19,7 @@ export default async function Home({searchParams}: {searchParams: Promise<{query
       <p className="text-3xl font-semibold ">
         {query ? `Search result for: " ${query}"`:"Startups"}
       </p>
-      <ul className="mt-7 card-grid">
+      <ul className="mt-7 card_grid">
         {posts && posts.length > 0 ? (
   posts.map((post: StartupCardType, index: number) => (
     <StartupCard key={post?._id} post={post} />
