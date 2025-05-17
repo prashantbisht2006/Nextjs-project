@@ -12,13 +12,19 @@ const SearchForm = ({ query }: { query?: string }) => {
                 placeholder="Search Startups"
             />
 
-            <div className="flex gap-2">
-                {query && <SearchFormReset />}
+            <div className="relative flex items-center gap-2 w-full">
+  {query && <SearchFormReset />}
 
-                <button type="submit" className="search-btn text-white absolute top-111 right-68 -translate-y-1/2">
-                    <Search className="size-5" />
-                </button>
-            </div>
+  
+
+  <button
+    type="submit"
+    className="absolute right-0 top-1/2 -translate-y-1/2 bg-black p-2 rounded-full text-white p-3 hover:bg-black transition"
+  >
+    <Search className="w-6 h-6" />
+  </button>
+</div>
+
         </Form>
     )
 }
