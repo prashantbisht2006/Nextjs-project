@@ -44,17 +44,20 @@ const StartupCards = ({post}={post: StartupTypeCard}) => {
         width={48} height={48} className='rounded-full'/>
         </Link>
       </div>
-      <Link href={`/user/${author?._id || "#"}`}>
+      <Link href={`/startup/${_id}`}>
       <p className='startup-card_desc'>
         {description}
         </p>
-      <Image
-            src={author?.image || "https://placehold.co/48x48"}
-            alt={author?.name || "Author"}
-            width={250}
-            height={48}
-            className="rounded-full"
-          /> </Link>
+      {image && (
+  <Image
+    src={image}
+    alt={title}
+    width={300}
+    height={200}
+    className="rounded-xl object-cover"
+  />
+)}
+ </Link>
       <div className='flex-between gap-3 mt-5'>
         <Link href={`/?query=${category.toLowerCase()}`}>
         <p className='text-16-medium'>
