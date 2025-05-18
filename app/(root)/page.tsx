@@ -1,22 +1,27 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCards";
+import { client } from "@/sanity/lib/client";
+import { STARTUPS_QUERIES } from "@/sanity/lib/queries";
+
+
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query;
 
-  // Added _id to post itself
-  const posts = [
-    {
-      _id: "1", // added unique id here as string
-      _createdAt: new Date(),
-      views: 100,
-      authors: { _id: "1", name: "prashant" },
-      description: "this is the description", // fixed typo
-      image: "https://images.unsplash.com/photo-1677631231231-123123123123?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-      category: "technology",
-      title: "technologia",
-    },
-  ];
+  const posts = await client.fetch(STARTUPS_QUERIES);
+  console.log(JSON.stringify(posts,null,2));
+  // const posts = [
+  //   {
+  //     _id: "1", 
+  //     _createdAt: new Date(),
+  //     views: 100,
+  //     authors: { _id: "1", name: "prashant" },
+  //     description: "this is the description", 
+  //     image: "https://images.unsplash.com/photo-1677631231231-123123123123?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
+  //     category: "technology",
+  //     title: "technologia",
+  //   },
+  // ];
 
   return (
     <>
@@ -38,7 +43,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ q
         </p>
         <ul className="mt-7 card_grid">
           {posts && posts.length > 0 ? (
-            posts.map((post) => (
+            posts.map((post:any) => (
               <StartupCard key={post._id} post={post} />
             ))
           ) : (
