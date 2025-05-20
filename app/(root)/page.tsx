@@ -9,9 +9,11 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query;
+  const param = {search: query || null};
+   
 
 
-  const {data:posts} = await sanityFetch({query:STARTUPS_QUERIES});
+  const {data:posts} = await sanityFetch({query:STARTUPS_QUERIES, params: param});
 
   console.log(JSON.stringify(posts,null,2));
   // const posts = [

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+
 module.exports = {
   images: {
     dangerouslyAllowSVG: true,
@@ -10,7 +11,16 @@ module.exports = {
       },
     ],
   },
+  // experimental:{
+  //   ppr:"incremental",
+  // },
+  devIndicators:{
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
+  }
 };
+
 
 const nextConfig: NextConfig = {
   /* config options here */
