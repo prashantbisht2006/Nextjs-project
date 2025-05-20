@@ -4,12 +4,15 @@ import { EyeIcon } from 'lucide-react'
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from './ui/button';
+import { Startup ,Author} from '@/sanity/types';
+
+export type StartupTypeCard = Omit< Startup,"author"> &{author?: Author};
 
 const StartupCards = ({post}={post: StartupTypeCard}) => {
   const {
   _createdAt,
   views,
-  author,// fix here
+  author,
   title,
   category,
   _id,
@@ -40,8 +43,13 @@ const StartupCards = ({post}={post: StartupTypeCard}) => {
 </Link>
         </div>
         <Link href={`/user/${author?._id}`}>
-        <Image src="https://placehold.co/600x400" alt="placeholder" 
-        width={48} height={48} className='rounded-full'/>
+         <Image
+      src={author?.image || "https://placehold.co/600x400"}
+      alt={author?.name || "Author"}
+      width={48}
+      height={48}
+      className="rounded-full"
+    />
         </Link>
       </div>
       <Link href={`/startup/${_id}`}>
