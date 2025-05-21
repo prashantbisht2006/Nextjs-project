@@ -28,28 +28,38 @@ const page = async({params}:{params:{id:string}}) => {
     <p className='sub-heading !max-w-5xl'>{post.description}</p>
     
     </section>
-    <section className='section_container '  >
-      <img src={post.image}
-      alt='thumbnail'
-      width={900}
+    <section className='section_container'>
+  <img
+    src={post.image}
+    alt='thumbnail'
+    width={900}
     height={400}
-      className='rounded-xl object-cover '/>
-      <div className='space-y-5 mt pt-10'>
-        <Link href={`/user/${post.author?._id}`}
-        className='flex gap-2 iteams-center mb-3'>
-          <img src={post.author.image} alt="avatar"
-          width={64} height={64} className='rounded-full drop-shadow-lg'/>
+    className='rounded-xl object-cover'
+  />
+
+  <div className='space-y-5 mt pt-10'>
+
+    <div className='flex items-center justify-between flex-wrap gap-4 mb-3'>
+      <Link href={`/user/${post.author?._id}`} className='flex items-center gap-2'>
+        <img
+          src={post.author.image}
+          alt="avatar"
+          width={64}
+          height={64}
+          className='rounded-full drop-shadow-lg'
+        />
         <div>
           <p className='text-20-medium'>{post.author.name}</p>
-          <p className='text-16-medium !text-black-300'>@{post.author.username}</p>
+          <p className='text-16-medium text-black-300'>@{post.author.username}</p>
         </div>
-        </Link>
-        <p className='category-tag'>{post.category}</p>
+      </Link>
 
+      <p className='category-tag'>{post.category}</p>
+    </div>
 
-      </div>
+  </div>
+</section>
 
-    </section>
     </>
   )
 }
