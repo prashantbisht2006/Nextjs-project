@@ -70,9 +70,17 @@
   @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-md transition-all duration-500 overflow-hidden hover:bg-blue-200 hover:border-blue-500;
 }
 
+.tag {
+  @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative border-2 border-black;
+}
+.section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto  ;
+  }
+.category-tag {
+  @apply absolute top-280 right-4 bg-blue-200 border-2 border-black font-bold uppercase rounded-full px-4 py-2 hover:bg-blue-400;
+}
 
-
-
+  
 .flex-between {
   @apply flex justify-between items-center;
 }
