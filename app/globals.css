@@ -118,6 +118,28 @@
   @apply font-normal text-sm text-white opacity-80;
 }
 
+.no-result {
+  @apply text-neutral-500 text-sm font-normal;
+}
+
+.divider {
+  @apply border-t border-dotted border-zinc-400 max-w-4xl my-10 mx-auto;
+}
+.view_skeleton {
+    @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
+  }
+.view-container {
+  @apply fixed bottom-3 right-3 flex justify-end items-center z-50;
+}
+
+
+.view-text {
+  @apply font-medium text-[16px] px-4 py-2 rounded-lg capitalize;
+  background-color: hsl(213, 100%, 87%); 
+}
+
+
+
 
 
 
