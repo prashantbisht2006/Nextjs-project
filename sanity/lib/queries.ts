@@ -27,3 +27,11 @@ export const STARTUP_BY_ID_QUERY = `*[_type == "startup" && _id == $id][0] {
   image,
   pitch
 }`;
+
+
+export const STARTUPS_VIEWS_QUERY = `
+  *[_type == "startup" && _id == $id][0]{
+    _id,
+    views
+  }
+`;

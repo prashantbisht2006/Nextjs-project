@@ -36,13 +36,16 @@ const page = async({params}:{params:{id:string}}) => {
     
     </section>
     <section className='section_container'>
+  <div className="flex justify-center w-full">
   <img
     src={post.image}
     alt='thumbnail'
     width={900}
     height={400}
-    className='rounded-xl object-cover'
+    className='rounded-xl object-cover w-full max-w-4xl h-auto'
   />
+</div>
+
 
   <div className='space-y-5 mt pt-10'>
 
