@@ -4,6 +4,9 @@ import { client } from '@/sanity/lib/client';
 import { STARTUP_BY_ID_QUERY } from '@/sanity/lib/queries';
 import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
+import markdownit from 'markdown-it';
+
+const md = markdownit();
 
 const page = async({params}:{params:{id:string}}) => {
     const id = (await params).id;
@@ -18,6 +21,7 @@ const page = async({params}:{params:{id:string}}) => {
             </div>
         )
     }
+    const parsedContent = md.render(post?.pitch||"");
     
   return (
     <>
@@ -56,6 +60,10 @@ const page = async({params}:{params:{id:string}}) => {
 
       <p className='category-tag'>{post.category}</p>
     </div>
+    <h3 className='text-30-bold'>Pitch Detail</h3>
+    {parsedContent?(<article className='prose max-w-4xl font-work-san break-all' dangerouslySetInnerHTML={{__html:parsedContent}} />):(<p className="no-result">
+      NO detail is provided  
+    </p>)}
 
   </div>
 </section>

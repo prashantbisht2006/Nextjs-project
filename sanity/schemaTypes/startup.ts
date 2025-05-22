@@ -51,9 +51,12 @@ export const startup = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'pitch',
-      title: 'Pitch',
-      type: 'markdown', 
-    }),
+  name: 'pitch',
+  title: 'Pitch',
+  type: 'code',
+  options: {
+    language: 'markdown',
+  },
+}),
   ],
 })
