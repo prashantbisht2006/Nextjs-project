@@ -138,9 +138,11 @@
     @apply font-bold text-[18px] text-black uppercase;
   }
 .startup-form_input {
-  @apply border-[3px] border-black px-5 py-7 text-[18x] text-black font-semibold mt-3 placeholder:text-black-300
+  @apply w-full max-w-screen px-4 py-0 h-16 rounded-full text-[18px] text-black font-semibold mt-3 border-[3px] border-black placeholder:text-gray-300;
 }
-
+.startup-form_textarea {
+    @apply border-[3px] border-black p-5 text-[18px]  rounded-full text-black font-semibold rounded-[20px] mt-3 placeholder:text-gray-300;
+  }
 
 
 .view-text {
