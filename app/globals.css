@@ -131,6 +131,16 @@
 .view-container {
   @apply fixed bottom-3 right-3 flex justify-end items-center z-50;
 }
+.startup-form {
+    @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
+  }
+.startup-form_label {
+    @apply font-bold text-[18px] text-black uppercase;
+  }
+.startup-form_input {
+  @apply border-[3px] border-black px-5 py-7 text-[18x] text-black font-semibold mt-3 placeholder:text-black-300
+}
+
 
 
 .view-text {
