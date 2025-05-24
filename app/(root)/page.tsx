@@ -3,6 +3,7 @@ import StartupCard,{ StartupTypeCard }  from "@/components/StartupCards";
 
 import { STARTUPS_QUERIES } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 
 
@@ -10,24 +11,14 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string }> }) {
   const query = (await searchParams).query;
   const param = {search: query || null};
+  const session = await auth();
+  console.log("session", session?.id);
    
 
 
   const {data:posts} = await sanityFetch({query:STARTUPS_QUERIES, params: param});
 
   console.log(JSON.stringify(posts,null,2));
-  // const posts = [
-  //   {
-  //     _id: "1", 
-  //     _createdAt: new Date(),
-  //     views: 100,
-  //     authors: { _id: "1", name: "prashant" },
-  //     description: "this is the description", 
-  //     image: "https://images.unsplash.com/photo-1677631231231-123123123123?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60",
-  //     category: "technology",
-  //     title: "technologia",
-  //   },
-  // ];
 
   return (
     <>

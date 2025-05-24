@@ -773,8 +773,7 @@
       "pitch": {
         "type": "objectAttribute",
         "value": {
-          "type": "inline",
-          "name": "code"
+          "type": "string"
         },
         "optional": true
       }
