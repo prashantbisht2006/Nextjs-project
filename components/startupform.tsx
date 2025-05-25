@@ -2,11 +2,21 @@
 import { client } from '@/sanity/lib/client';
 import React, { use, useState } from 'react';
 import {Textarea} from '@/components/ui/textarea';
+import MDEditor from '@uiw/react-md-editor';
+import { set } from 'sanity';
+import { Button } from './ui/button';
+import { Send } from 'lucide-react';
  
 
 const Startupform = () => {
   const [errors, seterrors] = useState<Record<string,string>>({});
   
+  const[pitch, setPitch] = useState<string>('');
+
+  const ispanding=false;
+
+
+
   return (
     <form action={() => {}} className='startup-form'>
       <div>
@@ -63,6 +73,37 @@ const Startupform = () => {
         {errors.imge && <p className='startup-form_error'>{errors.imge}</p>}
 
       </div>
+
+      <div data-color-mode="light">
+        <label htmlFor='Pitch' className='startup-form_label'>Pitch</label>
+       <MDEditor
+  value={pitch}
+  onChange={(value) => setPitch(value as string || '')}
+  id="pitch"
+  preview="edit"
+  height={300}
+  style={{
+    borderRadius: '20px',
+    backgroundColor: '#f9f9f9',
+    padding: '10px',
+    fontSize: '16px',
+    color: '#333',
+  }}
+  textareaProps={{
+    placeholder: "Briefly describe your startup..."
+  }}
+/>
+
+        {errors.pitch && <p className='startup-form_error'>{errors.pitch}</p>}
+
+      </div>
+      <Button type='submit' className='startup-form_btn' disabled={ispanding}>
+        {ispanding ? 'Submitting...' : 'Submit Your Startup'}
+        <Send className="size-6 sm:size-5 ml-2 text-black" />
+
+
+      </Button>
+
     </form>
   );
 };

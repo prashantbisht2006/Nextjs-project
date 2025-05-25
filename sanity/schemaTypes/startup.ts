@@ -53,7 +53,7 @@ export const startup = defineType({
     defineField({
   name: 'pitch',
   title: 'Pitch',
-  type: 'string',
+  type: 'markdown',
   
 }),
   ],
