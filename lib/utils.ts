@@ -10,3 +10,7 @@ export function cn(...inputs: ClassValue[]) {
     month: "long",
     year: "numeric",
   })}
+
+export function parseresponse<T>(response: T){
+  return JSON.parse(JSON.stringify(response))
+}

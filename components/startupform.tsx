@@ -10,11 +10,16 @@ import { useRouter } from 'next/navigation';
 import { FormSchema } from '@/lib/validation';
 import { z } from 'zod';
 import { toast } from 'sonner';
+import { createPitch } from "@/lib/Actions";
+// import { useToast } from '@/components/ui/use-toast';
+
 
 const Startupform = () => {
   const [errors, seterrors] = useState<Record<string,string>>({});
   
   const[pitch, setPitch] = useState<string>('');
+  // const { toast } = useToast();
+  const router = useRouter();
   
   const handleFormSubmit = async(prevState:any,formData:FormData)=>{
     try{
@@ -27,16 +32,15 @@ const Startupform = () => {
 
       await FormSchema.parseAsync(formValues);
 
-      console.log(formValues);
-//       const result = await client.createIdea(prevState , formData, pitch);
-//       if(result.status ==="SUCCESS"){
-//          toast("SUCCESS", {
-//   description: "Startup Pitch has been submitted successfully.",
-//   duration: 4000,
-// });
-//      Router.push(href:`/startup/${result.id}`)
-//       }
-//       return result;
+      
+     const result = await createPitch(prevState, formData, pitch);
+
+      if (result.status == "SUCCESS") {
+         toast.success("Startup Pitch submitted successfully!");
+
+        router.push(`/startup/${result._id}`);
+      }
+      return result;
     
 
 
