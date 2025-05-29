@@ -52,7 +52,7 @@ console.log("Fetched existing user:", existingUser);
           const user = await client.withConfig({useCdn:false}).fetch(AUTHOR_BY_GITHUB_ID_QUERY, {
             id: (profile?.id),
           });
-          token.id = user?._id;
+          token.id = user?._id as string;
         } catch (err) {
           console.error("JWT error:", err);
         }
@@ -61,9 +61,12 @@ console.log("Fetched existing user:", existingUser);
     },
 
     async session({ session, token }) {
-        Object.assign(session, {id:token.id});
-      return session;
-    },
+  if (session.user) {
+    session.user.id = token.id as string; 
+  }
+  return session;
+}
+
   },
 });
 

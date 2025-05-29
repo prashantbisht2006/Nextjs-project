@@ -1,4 +1,5 @@
 "use server";
+
 import { auth } from "@/auth";
 import { parseresponse } from "./utils";
 import slugify from "slugify";
@@ -7,62 +8,56 @@ import {useSession} from "next-auth/react";
 import { client } from "@/sanity/lib/client";
 
 
-
-export const createPitch = async (state: any, form: FormData, pitch: string) => {
+export const createPitch = async (
+  state: any,
+  form: FormData,
+  pitch: string,
+) => {
   const session = await auth();
+  console.log("Session in createPitch:", session);
 
-  if (!session) {
-    return parseresponse({ error: "Sign in first", status: "ERROR" });
-  }
+  if (!session)
+    return parseresponse({
+      error: "Not signed in",
+      status: "ERROR",
+    });
 
-  // Extract form fields except 'pitch'
   const { title, description, category, link } = Object.fromEntries(
-    Array.from(form.entries()).filter(([key]) => key !== "pitch")
+    Array.from(form).filter(([key]) => key !== "pitch"),
   );
 
   const slug = slugify(title as string, { lower: true, strict: true });
 
   try {
-    // 1. Query Sanity author by email
-    const authorQuery = `*[_type == "author" && email == $email][0] { _id, name, email, image, username }`;
-    let author = await client.fetch(authorQuery, { email: session.user.email });
-
-    // 2. If author doesn't exist, create it
-    if (!author) {
-      const newAuthor = {
-        _type: "author",
-        name: session.user.name,
-        email: session.user.email,
-        image: session.user.image,
-        // add any other fields you need here, e.g. username
-      };
-      author = await writeclient.create(newAuthor);
-    }
-
-    // 3. Now create startup with author._id as reference
     const startup = {
-      _type: "startup",
       title,
       description,
       category,
       image: link,
       slug: {
-        _type: "slug",
+        _type: slug,
         current: slug,
       },
       author: {
         _type: "reference",
-        _ref: author._id,  // Use the Sanity author ID here
+        _ref: session?.user.id,
       },
       pitch,
     };
 
-    const result = await writeclient.create(startup);
+    const result = await writeclient.create({ _type: "startup", ...startup });
 
-    return parseresponse({ ...result, status: "SUCCESS" });
-
+    return parseresponse({
+      ...result,
+      error: "",
+      status: "SUCCESS",
+    });
   } catch (error) {
-    console.error("Create Pitch Error:", error);
-    return parseresponse({ error: JSON.stringify(error), status: "ERROR" });
+    console.log(error);
+
+    return parseresponse({
+      error: JSON.stringify(error),
+      status: "ERROR",
+    });
   }
 };
