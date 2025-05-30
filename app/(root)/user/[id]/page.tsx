@@ -1,21 +1,31 @@
-import React from 'react'
-import { auth } from '@/auth'
+import { auth } from "@/auth";
 import { client } from "@/sanity/lib/client";
-import { AUTHOR_BY_ID_QUERY } from '@/sanity/lib/queries';
-import { notFound } from 'next/navigation';
-const page = async({params}:{params:Promise<{id:string}>}) => {
-    const id = (await params).id;
-    const session = await auth();
-    const user = await client.fetch(AUTHOR_BY_ID_QUERY,{id});
-    console.log("User in page:", user);
-    if (!user){
-        return notFound();
-    }
-  return (
-    <div>
-      page
-    </div>
-  )
-}
+import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
+import { notFound } from "next/navigation";
+import Image from "next/image";
 
-export default page
+import { Suspense } from "react";
+
+
+
+export const experimental_ppr = true;
+
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const session = await auth();
+  
+  const id = (await params).id;
+  
+
+  const user = await client.fetch(AUTHOR_BY_ID_QUERY, { id});
+  if (!user) return notFound();
+
+  return (
+    <>
+      
+          
+       
+    </>
+  );
+};
+
+export default Page;
