@@ -90,6 +90,10 @@
     @apply text-[30px] font-extrabold text-white;
   }
 
+  .text-20-extrabold {
+    @apply text-[20px] font-extrabold text-white;
+  }
+
   .text-30-bold {
     @apply text-[30px] font-bold text-black;
   }
@@ -152,6 +156,51 @@
 .startup-form_btn {
   @apply bg-blue-200 mx-auto inline-flex  hover:bg-blue-400 border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] flex items-center justify-center;
 }
+
+
+ /* profile */
+ /* Profile Container */
+.profile_container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 
+         flex flex-col items-center gap-10 lg:flex-col lg:justify-center;
+}
+
+
+
+
+/* Profile Card */
+.profile_card {
+  @apply w-full max-w-xs px-1 pt-15 pb-5 flex flex-col items-center justify-center 
+         bg-blue-300 border-4 border-black shadow-lg rounded-3xl relative z-0 h-fit;
+}
+
+
+/* Profile Title */
+.profile_title {
+  @apply absolute -top-9 w-11/12 px-5 py-3 bg-white border-4 border-black rounded-2xl shadow-lg;
+
+  /* Decorative before/after pseudo-elements */
+  position: relative;
+}
+.profile_title::after,
+.profile_title::before {
+  @apply absolute w-full h-[60px] bg-black rounded-2xl -z-[1] -skew-y-6 content-[''];
+}
+.profile_title::after {
+  top: -1px;
+  right: 0;
+}
+.profile_title::before {
+  bottom: -1px;
+  left: 0;
+}
+
+/* Profile Image */
+.profile_image {
+  @apply w-24 h-24 rounded-full object-cover border-2 border-black;
+}
+
+
 
 
   
