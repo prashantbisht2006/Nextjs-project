@@ -1,6 +1,8 @@
 import React from 'react';
 import { auth } from '@/auth';
 import { githubSignIn, logout } from '@/app/actions/auth-action';
+import { BadgePlus, LogOut } from "lucide-react";
+
 
 const Navbar = async () => {
   const session = await auth();
@@ -21,12 +23,15 @@ const Navbar = async () => {
           {session?.user ? (
             <>
               <a href="/startup/create">
-                <span>Create</span>
+                <span className='max-sm:hidden'>Create</span>
+                <BadgePlus className="size-6 sm:hidden" />
+
               </a>
 
               <form action={logout}>
                 <button type="submit">
-                  <span>Logout</span>
+                  <span className='max-sm:hidden'>Logout</span>
+                 <LogOut className="size-6 sm:hidden text-red-500" />
                 </button>
               </form>
 

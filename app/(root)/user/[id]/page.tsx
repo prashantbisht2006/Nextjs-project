@@ -3,12 +3,15 @@ import { client } from "@/sanity/lib/client";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-
+import Userstartups from "@/components/Userstartups";
 import { Suspense } from "react";
+import { StartupcardSkeleton } from "@/components/StartupCards";
+
+ export const experimental_ppr = true;
 
 
 
-export const experimental_ppr = true;
+
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const session = await auth();
@@ -47,7 +50,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             {session?.user?.name === user.name ? "Your" : "All"} Startup's
           </p>
           <ul className="card_grid-sm">
-            {/* todooooooooo */}
+            <Suspense fallback={<StartupcardSkeleton/>}>
+              <Userstartups id={id}/>
+            </Suspense>
+            
 
           </ul>
 

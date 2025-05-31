@@ -156,6 +156,9 @@
 .startup-form_btn {
   @apply bg-blue-200 mx-auto inline-flex  hover:bg-blue-400 border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] flex items-center justify-center;
 }
+.card_grid-sm {
+    @apply grid sm:grid-cols-2 gap-5;
+  }
 
 
  /* profile */
