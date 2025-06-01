@@ -95,7 +95,7 @@ const Startupform = () => {
         <Textarea
           id="description"
           name="description"
-          className='startup-form_textarea'
+          className='startup-form_textarea resize-none h-20 overflow-y-auto'
           required
           placeholder="Description..."
         />
