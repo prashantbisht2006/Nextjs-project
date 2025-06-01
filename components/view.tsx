@@ -3,7 +3,7 @@ import Ping from './ping';
 import { client } from '@/sanity/lib/client';
 import { STARTUPS_VIEWS_QUERY } from '@/sanity/lib/queries';
 import { writeclient } from '@/sanity/lib/write-client';
-import {unsatable_after as after} from 'next/server'
+
 interface Props {
   id: string;
 }

@@ -10,10 +10,10 @@ import { StartupcardSkeleton } from "@/components/StartupCards";
  export const experimental_ppr = true;
 
 
+type ParamsType = Promise<{ id: string }>
 
 
-
-const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+const Page = async ({ params }: { params: ParamsType }) => {
   const session = await auth();
   
   const id = (await params).id;

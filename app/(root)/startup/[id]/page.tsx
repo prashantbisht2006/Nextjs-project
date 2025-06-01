@@ -12,8 +12,10 @@ import { log } from 'console';
 
 const md = markdownit();
 
-const Page = async ({ params }: { params: { id: string } }) => {
-    const resolvedParams = await params;
+type ParamsType = Promise<{ id: string }>
+
+const Page = async ({ params }: { params: ParamsType }) => {
+  const resolvedParams = await params;
   const id = resolvedParams.id;
   if (!id) {
     return (
@@ -24,7 +26,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
 
   const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
-  const { select = [] } = (await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'trending' })) || {};
+  const { select  } = (await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: 'trending' })) || {};
   console.log("playlist=",select);
   
 
